@@ -1,2 +1,4 @@
-Flask==2.3.3
-prometheus-client==0.17.1
+flask
+prometheus_client
+python-json-logger
+gunicorn
