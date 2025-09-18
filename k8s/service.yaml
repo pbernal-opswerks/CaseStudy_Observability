@@ -9,10 +9,9 @@ spec:
   selector:
     app: my-webapp
   ports:
-  - name: web
-    port: 80
-    targetPort: 3000
-  - name: metrics
+  - name: http
     port: 8080
-    targetPort: 8080
+    targetPort: 3000
+    protocol: TCP
+  type: ClusterIP
 
