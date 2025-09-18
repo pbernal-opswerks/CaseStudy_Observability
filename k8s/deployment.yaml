@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-webapp
+  namespace: my-app-namespace
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: my-webapp
+  template:
+    metadata:
+      labels:
+        app: my-webapp
+    spec:
+      containers:
+      - name: webapp
+        image: my-webapp:latest
+        ports:
+        - containerPort: 3000
+          name: http
+        - containerPort: 8080
+          name: metrics
+        env:
+        - name: METRICS_PORT
+          value: "8080"

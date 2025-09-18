@@ -1,0 +1,20 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: my-webapp-monitor
+  namespace: my-app-namespace
+  labels:
+    app: my-webapp
+    release: prometheus  # 🔥 REQUIRED!
+spec:
+  selector:
+    matchLabels:
+      app: my-webapp
+  endpoints:
+  - port: metrics
+    path: /metrics
+    interval: 30s
+    scrapeTimeout: 10s
+  namespaceSelector:
+    matchNames:
+    - my-app-namespace
