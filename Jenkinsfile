@@ -41,7 +41,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                checkout scm
+                git branch: 'main', url: 'https://github.com/pbernal-opswerks/CaseStudy_Observability.git'
             }
         }
         
@@ -65,10 +65,16 @@ pipeline {
             steps {
                 container('kubectl') {
                     sh """
-                        kubectl set image deployment/${APP_NAME} \\
-                        ${APP_NAME}=${DOCKER_REGISTRY}/${DOCKER_USERNAME}/${APP_NAME}:${IMAGE_TAG} \\
-                        -n ${NAMESPACE}
-                        
+                        if ! kubectl get deployment ${APP_NAME} -n ${NAMESPACE}; then
+                          kubectl create deployment ${APP_NAME} \
+                            --image=${DOCKER_REGISTRY}/${DOCKER_USERNAME}/${APP_NAME}:${IMAGE_TAG} \
+                            -n ${NAMESPACE}
+                        else
+                          kubectl set image deployment/${APP_NAME} \
+                            ${APP_NAME}=${DOCKER_REGISTRY}/${DOCKER_USERNAME}/${APP_NAME}:${IMAGE_TAG} \
+                            -n ${NAMESPACE}
+                        fi
+
                         kubectl rollout status deployment/${APP_NAME} -n ${NAMESPACE}
                     """
                 }
