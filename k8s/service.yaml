@@ -9,9 +9,8 @@ spec:
   selector:
     app: my-webapp
   ports:
-  - name: http
-    port: 8080
-    targetPort: 3000
-    protocol: TCP
+    - name: http           # ⚡ Must match ServiceMonitor 'port'
+      port: 8080
+      targetPort: 3000     # ⚡ Your container's exposed port
+      protocol: TCP
   type: ClusterIP
-
