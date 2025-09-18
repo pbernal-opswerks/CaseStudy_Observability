@@ -5,16 +5,16 @@ metadata:
   namespace: my-app-namespace
   labels:
     app: my-webapp
-    release: prometheus  # 🔥 REQUIRED!
+    release: prometheus      # ⚡ Must match your Prometheus release label
 spec:
   selector:
     matchLabels:
-      app: my-webapp
+      app: my-webapp         # ⚡ Must match your Service's label
   endpoints:
-  - port: http
-    path: /metrics
-    interval: 30s
-    scrapeTimeout: 10s
+    - port: http              # ⚡ Must match Service port name
+      path: /metrics
+      interval: 30s
+      scrapeTimeout: 10s
   namespaceSelector:
     matchNames:
-    - my-app-namespace
+      - my-app-namespace
