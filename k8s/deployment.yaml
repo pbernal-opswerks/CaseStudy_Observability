@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: webapp
-        image: my-webapp:latest
+        image: bernalp/my-app:latest
         ports:
         - containerPort: 3000
           name: http
@@ -24,3 +24,4 @@ spec:
         env:
         - name: METRICS_PORT
           value: "8080"
+
