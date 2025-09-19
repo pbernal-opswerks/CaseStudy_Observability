@@ -55,6 +55,25 @@ def home():
 def health():
     return jsonify(status="ok")
 
+# ⚠️ NEW ENDPOINT for readiness check
+@app.route("/readiness")
+def readiness():
+    if readiness_status == "ok":
+        return jsonify(status="ok"), 200
+    else:
+        return jsonify(status="not ready"), 503 # 503 is the standard status code for service unavailable
+
+# ⚠️ NEW ENDPOINT to toggle readiness status
+@app.route("/toggle-readiness")
+def toggle_readiness():
+    global readiness_status
+    if readiness_status == "ok":
+        readiness_status = "not ready"
+        return jsonify(message="Readiness status set to 'not ready'"), 200
+    else:
+        readiness_status = "ok"
+        return jsonify(message="Readiness status set to 'ok'"), 200
+
 @app.route("/badrequest")
 def badrequest():
     # simulate a 400
