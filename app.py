@@ -26,6 +26,8 @@ REQUEST_LATENCY = Histogram(
     ["endpoint"]
 )
 
+readiness_status = "ok"
+
 @app.before_request
 def start_timer():
     request.start_time = time.time()
