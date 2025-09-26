@@ -4,6 +4,7 @@
 - See the [Prometheus & Grafana Documentation](Tools-Documentation/Prometheus-Grafana/README.md) for more details
 - See the [Splunk Documentation](Tools-Documentation/Splunk/README.md) for more details
 - See the [Grafana-Dashboard Documentation](Grafana-Dashboard/README.md) for more details
+- See the [Splunk-Dashboard Documentation](Splunk-Dashboard/README.md) for more details
 
 # Ops Simulation Runbook
 - See the [Runbook Documentation](Runbook/README.md) for more details
