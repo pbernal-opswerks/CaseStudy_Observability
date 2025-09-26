@@ -1,3 +1,5 @@
+# TechWorms Observability: Monitoring & Logging Case Study
+---
 #  Documentations
 - See the [K8s Documentation](k8s/README.md) for more details
 - See the [Jenkins Documentation](Tools-Documentation/Jenkins/README.md) for more details
@@ -487,3 +489,8 @@ kubectl get pods -n monitoring --show-labels
 - No built-in authentication for Prometheus
 - Use VPN or bastion hosts for remote access
 
+# Developers
+- Rigel Kent Canonigo
+- Perry Bernal
+- Joseph Roda Lacao-Lacao
+- Cherish Gohee
